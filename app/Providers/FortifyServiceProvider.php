@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Providers;
-use Laravel\Fortify\Actions\AttemptToAuthenticate;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use App\Actions\Fortify\AttemptToAuthenticate;
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use App\Http\Controllers\AdminController;
 use App\Actions\Fortify\CreateNewUser;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-
+use Illuminate\Support\Facades\Auth;
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
