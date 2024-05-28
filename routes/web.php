@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MainUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +31,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('dashboard');
+        return view('admin.index');
     })->name('dashboard');
 });
 
@@ -45,5 +46,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
+//user profile
+Route::get('/user/profile',[MainUserController::class, 'userProfile'])->name('user.profile');
+Route::get('/user/logout',[MainUserController::class, 'logout'])->name('user.logout');
 
-
+Route::get('/admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
